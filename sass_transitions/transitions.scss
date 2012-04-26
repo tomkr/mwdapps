@@ -1,0 +1,98 @@
+@mixin animationDuration($time) {
+    -webkit-animation-duration: $time;
+    -moz-animation-duration: $time;
+    -o-animation-duration: $time;
+    -ms-animation-duration: $time;
+}
+
+div {
+    width: 320px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    height: 100%;
+    @include animationDuration(.5s);
+}
+.current {
+    display: block;
+}
+.main {
+    background-color: red;
+}
+
+.second {
+    background-color: green;
+}
+
+@mixin slideTransform($start, $end, $vendor) {
+        from {-#{$vendor}-transform: translateX($start);}
+        to {-#{$vendor}-transform: translateX($end);}
+}
+@-webkit-keyframes outLeft {
+    @include slideTransform(0%, -100%, webkit);
+}
+@-webkit-keyframes inLeft {
+    @include slideTransform(100%, 0%, webkit);
+}
+@-webkit-keyframes outRight {
+    @include slideTransform(0%, 100%, webkit);
+}
+@-webkit-keyframes inRight {
+    @include slideTransform(-100%, 0%, webkit);
+}
+@-moz-keyframes outLeft {
+    @include slideTransform(0%, -100%, moz);
+}
+@-moz-keyframes inLeft {
+    @include slideTransform(100%, 0%, moz);
+}
+@-moz-keyframes outRight {
+    @include slideTransform(0%, 100%, moz);
+}
+@-moz-keyframes inRight {
+    @include slideTransform(-100%, 0%, moz);
+}
+@-o-keyframes outLeft {
+    @include slideTransform(0%, -100%, o);
+}
+@-o-keyframes inLeft {
+    @include slideTransform(100%, 0%, o);
+}
+@-o-keyframes outRight {
+    @include slideTransform(0%, 100%, o);
+}
+@-o-keyframes inRight {
+    @include slideTransform(-100%, 0%, o);
+}
+@-ms-keyframes outLeft {
+    @include slideTransform(0%, -100%, ms);
+}
+@-ms-keyframes inLeft {
+    @include slideTransform(100%, 0%, ms);
+}
+@-ms-keyframes outRight {
+    @include slideTransform(0%, 100%, ms);
+}
+@-ms-keyframes inRight {
+    @include slideTransform(-100%, 0%, ms);
+}
+
+@mixin slideAnimation($name) {
+    -webkit-animation-name: $name;
+    -moz-animation-name: $name;
+    -o-animation-name: $name;
+    -ms-animation-name: $name;
+}
+.out_left {
+    @include slideAnimation(outLeft);
+}
+.in_left {
+    @include slideAnimation(inLeft);
+}
+.out_right {
+    @include slideAnimation(outRight);
+}
+.in_right {
+    @include slideAnimation(inRight);
+}
